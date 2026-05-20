@@ -364,6 +364,9 @@
 <div class="form-group"><label>Resolução</label><input id="atv_resolucao" placeholder="Ex: Ativação concluída" type="text"/></div>
 </div>
 <div class="form-row">
+<div class="form-group"><label>Data da Ativação</label><input id="atv_data" type="date"/></div>
+</div>
+<div class="form-row">
 <div class="form-group"><label>Cliente</label><input id="atv_cliente" placeholder="Nome do cliente" type="text"/></div>
 <div class="form-group"><label>Rack</label><input id="atv_rack" placeholder="Rack/local de instalação" type="text"/></div>
 </div>
@@ -461,6 +464,7 @@
 <h3 class="card-title">🛠️ Manutenção</h3>
 <div class="form-row">
 <div class="form-group"><label>Técnico responsável</label><input id="mnt_tecnico" placeholder="Nome do técnico" type="text"/></div>
+<div class="form-group"><label>Data da Manutenção</label><input id="mnt_data" type="date"/></div>
 </div>
 <div class="form-row">
 <div class="form-group"><label>Problema</label><input id="mnt_problema" placeholder="Descreva o problema identificado" type="text"/></div>
@@ -626,6 +630,10 @@
 
         const dataVistoria = document.getElementById('data_vistoria');
         if (dataVistoria) dataVistoria.valueAsDate = new Date();
+        const dataAtivacao = document.getElementById('atv_data');
+        if (dataAtivacao) dataAtivacao.valueAsDate = new Date();
+        const dataManutencao = document.getElementById('mnt_data');
+        if (dataManutencao) dataManutencao.valueAsDate = new Date();
 
         // Desativa service workers/cache antigo durante a fase de alterações.
         if ('serviceWorker' in navigator) {
@@ -1124,6 +1132,9 @@ Não informado
         };
 
         let t = `<b>Manutenção</b>
+`;
+        t += `♦️ <b>Data:</b> ${escapeHtmlGlobal(formatarDataBR('mnt_data'))}
+
 `;
         t += `🔴 <b>Análise Técnica</b>
 
